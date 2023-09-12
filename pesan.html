@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Message for You</title>
+    <style>
+      /* Your CSS styles here */
+      body {
+        font-family: Arial, sans-serif; /* Mengganti jenis font */
+        background-image: linear-gradient(to right, #69d2e7, #a7dbd8);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        perspective: auto;
+      }
+
+      .book {
+        width: 780px; /* Sesuaikan lebar dan tinggi sesuai kebutuhan */
+        height: 600px; /* Sesuaikan lebar dan tinggi sesuai kebutuhan */
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .page {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(244, 249, 255);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        font-size: 20px;
+        text-align: center;
+        padding: 15px;
+        line-height: 1.5;
+        color: #333;
+        transform: rotateY(0deg);
+        transition: transform 0.5s;
+        opacity: 0;
+      }
+
+      .page:nth-child(even) {
+        transform: rotateY(180deg);
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .back-button {
+        background-color: #fff;
+        border: none;
+        color: #f38630;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s, color 0.3s;
+        position: relative;
+        z-index: 2;
+      }
+
+      .back-button:hover {
+        background-color: #f38630;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="book">
+        <div class="page">
+          <h1>Dear Irma</h1>
+          <p>
+            Selamat ulang tahun, jangan overthinking terus ya, kasian jinnya
+            ikutan ovt, tetap semangat walau dunia tidak sedang baik-baik saja,
+            jika butuh keluh kesah bisa curhat ke chatgpt aja ya, atau ke
+            google. Jangan ke facebook, makhluknya masih banyak yang primitif,
+            jangan kebanyakan akun fake Twitter juga ege, oh iyah di twitter
+            atau X atau apalah, jangan nyari doodstream ya, nanti diblokir
+            kominfo. 1 lagi, Jangan khawatirkan dunia krna jika Tuhan masih
+            memberikanmu nyawa artinya DIA masih percaya ama lu. Semoga Allaah
+            memberkatimu. Amiin. <br />
+            With love and best wishes,
+          </p>
+          <p>Faruq Aziz, Alhamdulillaah M.Kom</p>
+        </div>
+        <div class="page">
+          <img
+            src="https://i1.sndcdn.com/artworks-000510112725-gfqsgb-t500x500.jpg"
+            width="825"
+            height="625"
+          />
+        </div>
+        <div class="page">
+          <img
+            src="https://jateng.disway.id/upload/cf71c905341586b0f888bc8cc16bcbfb.jpg"
+            width="825"
+            height="500"
+          />
+        </div>
+        <div class="page">
+          <img
+            src="https://img.freepik.com/premium-vector/cute-panda-working-laptop-cartoon_346903-816.jpg"
+            width="620"
+            height="480"
+          />
+        </div>
+        <div class="page">
+          <img src="./irmleuy.jpeg" width="450" height="500" />
+          <a href="index.html" class="back-button">See You!</a>
+        </div>
+      </div>
+      <a href="javascript:void(0);" class="back-button" onclick="previousPage()"
+        >Previous Page</a
+      >
+      <a href="javascript:void(0);" class="back-button" onclick="nextPage()"
+        >Next Page</a
+      >
+      <audio autoplay>
+        <source src="piano.mp3" type="audio/mp3" />
+      </audio>
+    </div>
+
+    <script>
+      let currentPage = 0;
+      const pages = document.querySelectorAll(".page");
+
+      function showPage(pageIndex) {
+        pages.forEach((page, index) => {
+          if (index === pageIndex) {
+            page.style.transform = "rotateY(0deg)";
+            page.style.opacity = 1;
+          } else {
+            page.style.transform = "rotateY(180deg)";
+            page.style.opacity = 0;
+          }
+        });
+      }
+
+      function previousPage() {
+        currentPage = (currentPage - 1 + pages.length) % pages.length;
+        showPage(currentPage);
+      }
+
+      function nextPage() {
+        currentPage = (currentPage + 1) % pages.length;
+        showPage(currentPage);
+      }
+
+      showPage(currentPage);
+    </script>
+  </body>
+</html>
